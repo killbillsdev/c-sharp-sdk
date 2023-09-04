@@ -1,0 +1,12 @@
+/Users/theo/c-sharp-sdk/CSharpSDK/bin/Debug/net7.0/CSharpSDK.deps.json
+/Users/theo/c-sharp-sdk/CSharpSDK/bin/Debug/net7.0/CSharpSDK.dll
+/Users/theo/c-sharp-sdk/CSharpSDK/bin/Debug/net7.0/CSharpSDK.pdb
+/Users/theo/c-sharp-sdk/CSharpSDK/obj/Debug/net7.0/CSharpSDK.csproj.AssemblyReference.cache
+/Users/theo/c-sharp-sdk/CSharpSDK/obj/Debug/net7.0/CSharpSDK.GeneratedMSBuildEditorConfig.editorconfig
+/Users/theo/c-sharp-sdk/CSharpSDK/obj/Debug/net7.0/CSharpSDK.AssemblyInfoInputs.cache
+/Users/theo/c-sharp-sdk/CSharpSDK/obj/Debug/net7.0/CSharpSDK.AssemblyInfo.cs
+/Users/theo/c-sharp-sdk/CSharpSDK/obj/Debug/net7.0/CSharpSDK.csproj.CoreCompileInputs.cache
+/Users/theo/c-sharp-sdk/CSharpSDK/obj/Debug/net7.0/CSharpSDK.dll
+/Users/theo/c-sharp-sdk/CSharpSDK/obj/Debug/net7.0/refint/CSharpSDK.dll
+/Users/theo/c-sharp-sdk/CSharpSDK/obj/Debug/net7.0/CSharpSDK.pdb
+/Users/theo/c-sharp-sdk/CSharpSDK/obj/Debug/net7.0/ref/CSharpSDK.dll
