@@ -1,13 +1,25 @@
-using System.Net.Http;
-using System.Threading.Tasks;
+using CSharpSDK.Services;
 
 namespace CSharpSDK
 {
-    public partial class Killbills_sdk
+    public class SendTransaction
     {
-        public async Task<string> SendTransaction()
+        private readonly SendDataWithHmacService _sendDataWithHmacService;
+
+        public SendTransaction()
         {
-          return await SendTransaction();
+            _sendDataWithHmacService = new SendDataWithHmacService();
+        }
+
+        public async Task<string> SendBankingTransactionAsync(string env, object transactionData, string hmacKey)
+        {
+            return await _sendDataWithHmacService.SendDataWithHmacAsync(
+                env,
+                "transaction",
+                transactionData,
+                hmacKey,
+                PayloadValidator.ValidateTransactionPayload
+            );
         }
     }
 }
