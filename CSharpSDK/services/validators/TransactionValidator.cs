@@ -1,5 +1,6 @@
 using FluentValidation;
 using CSharpSDK.DTOs;
+using System.Linq;
 
 namespace CSharpSDK.Validators
 {

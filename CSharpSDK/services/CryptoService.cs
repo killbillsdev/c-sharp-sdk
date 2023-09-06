@@ -1,18 +1,22 @@
 using System;
-using System.Text;
 using System.Security.Cryptography;
-
+using System.Text;
 
 namespace CSharpSDK.Services
 {
     public class CryptoService
     {
-        public string ComputeHMACSHA256(string payload, string secretKey)
+        public static string ComputeHMACSHA256(string key, string message)
+    {
+        var encoding = new UTF8Encoding();
+        byte[] keyByte = encoding.GetBytes(key);
+        byte[] messageBytes = encoding.GetBytes(message);  
+        using(var hmacsha256 = new HMACSHA256(keyByte))
         {
-            using var hmac = new HMACSHA256(Encoding.UTF8.GetBytes(secretKey));
-            var hashBytes = hmac.ComputeHash(Encoding.UTF8.GetBytes(payload));
-            return BitConverter.ToString(hashBytes).Replace("-", "").ToLower(); // Convertit les bytes en string hexadécimal
+            byte[] hashmessage = hmacsha256.ComputeHash(messageBytes);
+            return BitConverter.ToString(hashmessage).Replace("-", "").ToLower();
         }
+    }
 
     }
 }

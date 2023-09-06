@@ -1,8 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using CSharpSDK.Services;
 using Newtonsoft.Json;
 
 namespace CSharpSDK.Services
@@ -10,13 +11,13 @@ namespace CSharpSDK.Services
     public class SendDataWithHmacService
     {
         private readonly CryptoService _cryptoService;
-        
+
         public SendDataWithHmacService()
         {
             _cryptoService = new CryptoService();
         }
 
-        public async Task<string> SendDataWithHmacAsync(string env, string endpoint, object data, string hmacSignature, Func<object, bool> validator)
+        public async Task<string> SendDataWithHmacAsync(string env, string endpoint, object data, string hmacSignature, Func<object, (bool, List<string>)> validator)
         {
             try
             {
@@ -25,29 +26,31 @@ namespace CSharpSDK.Services
                     throw new ArgumentException($"You have not provided Data or Hmac Signature : \n Data: {data}, \n hmacSignature: {hmacSignature}");
                 }
 
-                bool validation = validator(data);
-                if (!validation)
+                var (isValid, errorMessages) = validator(data);
+                if (!isValid)
                 {
-                    throw new ArgumentException("Payload validation failed.");
+                    string combinedErrors = string.Join("; ", errorMessages);
+                    throw new ArgumentException(combinedErrors);
                 }
+                string payloadJson = JsonConvert.SerializeObject(data);
+                string hmac = CryptoService.ComputeHMACSHA256(hmacSignature,payloadJson);
 
-                var jsonData = JsonConvert.SerializeObject(data);
-                var hashedPayload = _cryptoService.ComputeHMACSHA256(jsonData, hmacSignature);
-
-                using (var httpClient = new HttpClient())
+                var client = new HttpClient();
+                var content = new StringContent(payloadJson, Encoding.UTF8, "application/json");
+                var url = $"https://in.{(env != "prod" ? env + "." : ".")}killbills.{(env != "prod" ? "dev" : "co")}/{endpoint}";
+                var requestMessage = new HttpRequestMessage(HttpMethod.Post, url)
                 {
-                    httpClient.DefaultRequestHeaders.Add("Authorization", $"hmac {hashedPayload}");
-                    
-                    var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                    var url = $"https://in.{(env != "prod" ? env + "." : ".")}killbills.{(env != "prod" ? "dev" : "co")}/{endpoint}";
-                    var response = await httpClient.PostAsync(url, content);
-                    
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        return $"Error: {response.StatusCode.ToString()}";
-                    }
-                    return await response.Content.ReadAsStringAsync();
-                }
+                    Content = content
+                };
+                requestMessage.Headers.Add("Authorization", "hmac " + hmac);
+
+                var response = client.SendAsync(requestMessage).Result;
+
+                string responseContent = response.Content.ReadAsStringAsync().Result;
+                
+                Console.WriteLine(responseContent);
+                
+                return payloadJson;
             }
             catch (Exception ex)
             {
@@ -56,3 +59,4 @@ namespace CSharpSDK.Services
         }
     }
 }
+

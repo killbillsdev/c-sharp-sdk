@@ -1,7 +1,10 @@
+using System;
+
 namespace CSharpSDK.DTOs
 {
     public class TransactionDto
     {
+        public required string PartnerName { get; set; }
         public required string BankId { get; set; }
         public required string CallbackUrl { get; set; }
         public required string ReceiptFormat { get; set; }
@@ -29,5 +32,10 @@ namespace CSharpSDK.DTOs
         public required string AuthCode { get; set; }
         public required string Scheme { get; set; }
         public required string TransactionId { get; set; }
+
+        public static implicit operator PaymentDto(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

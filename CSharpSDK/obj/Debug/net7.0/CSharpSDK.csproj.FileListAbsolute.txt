@@ -10,3 +10,9 @@
 /Users/theo/c-sharp-sdk/CSharpSDK/obj/Debug/net7.0/refint/CSharpSDK.dll
 /Users/theo/c-sharp-sdk/CSharpSDK/obj/Debug/net7.0/CSharpSDK.pdb
 /Users/theo/c-sharp-sdk/CSharpSDK/obj/Debug/net7.0/ref/CSharpSDK.dll
+/Users/theo/c-sharp-sdk/CSharpSDK/bin/Debug/net7.0/CSharpSDK
+/Users/theo/c-sharp-sdk/CSharpSDK/bin/Debug/net7.0/CSharpSDK.runtimeconfig.json
+/Users/theo/c-sharp-sdk/CSharpSDK/bin/Debug/net7.0/FluentValidation.dll
+/Users/theo/c-sharp-sdk/CSharpSDK/bin/Debug/net7.0/Newtonsoft.Json.dll
+/Users/theo/c-sharp-sdk/CSharpSDK/obj/Debug/net7.0/CSharpSDK.csproj.CopyComplete
+/Users/theo/c-sharp-sdk/CSharpSDK/obj/Debug/net7.0/CSharpSDK.genruntimeconfig.cache

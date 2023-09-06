@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using CSharpSDK.DTOs;
 using CSharpSDK.Validators;
 using FluentValidation;
@@ -7,19 +9,20 @@ namespace CSharpSDK.Services
 {
     public static class PayloadValidatorService
     {
-        public static bool ValidateTransactionPayload(TransactionDto transactionData)
+        public static (bool IsValid, List<string> Errors) ValidateTransactionPayload(TransactionDto transactionData)
         {
             var validator = new TransactionValidator();
             ValidationResult results = validator.Validate(transactionData);
 
+            var errors = new List<string>();
             if (!results.IsValid)
             {
                 foreach (var failure in results.Errors)
                 {
-                    Console.WriteLine("Property " + failure.PropertyName + " failed validation. Error was: " + failure.ErrorMessage);
+                    errors.Add("Property " + failure.PropertyName + " failed validation. Error was: " + failure.ErrorMessage);
                 }
             }
-            return results.IsValid;
+            return (results.IsValid, errors);
         }
     }
 }
