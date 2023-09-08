@@ -1,6 +1,4 @@
-using System;
-using CSharpSDK;
-using System.Threading.Tasks;
+
 using CSharpSDK.DTOs;
 
 namespace CSharpSDK
@@ -9,43 +7,37 @@ namespace CSharpSDK
     {
         static async Task Main(string[] args)
         {
-            Console.WriteLine("Lancement de la fonction sendTransaction...");
+            var sdk = new KillBills_Sdk();
+            Console.WriteLine("Lancement de la fonction sendReceipt...");
 
             string env = "dev";
-            // object transactionData = new {};
             TransactionDto transactionData = new()
-{
-    BankId = "f8405dae-b77a-47cf-a54f-1262015db87d",
-    PartnerName = "expensya",
-    CallbackUrl = "https://localhost",
-    ReceiptFormat = "pdf",
-    Transaction = new TransactionDetailDto
-    {
-        Siret = "12345678900000",
-        Amount = 111102345,
-        Currency = "EUR",
-        StoreName = "RESTAU TEST 0", // pos_name 
-        CustomerId = "fff",
-        ReferenceId = "bc851e57-27ee-452c-aacf-7253ead56f8d",
-        MerchantName = "RESTAU TEST 0",
-        TransactionDate = DateTimeOffset.FromUnixTimeSeconds(1693560263).DateTime,
-        BillingDescriptor = "fff",
-        Payment = new PaymentDto
-        {
-            Bin = "15353635",
-            LastFour = "1530145",
-            AuthCode = "27402942",
-            Scheme = "VISA",
-            TransactionId = "ffff1142da3a7b92d51efc5819ed49c40677a"
-        }
-    }
-};
-
-            string hmacKey = "hmackey";
-
-            var sender = new SendTransaction();
-
-            string result = await sender.SendBankingTransactionAsync(env, transactionData, hmacKey);
+            {
+               BankId = "fbec0cb5-91c8-4b8b-a194-c018fbfe258d",
+               CallbackUrl = "http://localhost",
+               ReceiptFormat = "json",
+               Transaction = new TransactionDetailDto {
+                Amount = 1000,
+                ReferenceId = "reference-id",
+                Currency = "EUR",
+                MerchantName = "zdazd",
+                CustomerId = "fzefezf",
+                StoreName = "dazdazd",
+                TransactionDate = 1693384066,
+                BillingDescriptor = "dazdazd",
+                Siret = "12238383838383",
+                Payment = new PaymentDto {
+                    Bin = "12",
+                    LastFour = "1212",
+                    AuthCode = "1212",
+                    Scheme = "121", 
+                    TransactionId = "121212",
+                },
+               },
+            };
+        
+            string hmacKey = "unknwn";
+            string result = await sdk.SendTransactionAsync(env, transactionData, hmacKey);
 
             Console.WriteLine($"Résultat: {result}");
         }

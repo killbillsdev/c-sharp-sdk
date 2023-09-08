@@ -1,10 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace CSharpSDK.Services
 {
@@ -32,7 +27,13 @@ namespace CSharpSDK.Services
                     string combinedErrors = string.Join("; ", errorMessages);
                     throw new ArgumentException(combinedErrors);
                 }
-                string payloadJson = JsonConvert.SerializeObject(data);
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNamingPolicy = null,
+                    PropertyNameCaseInsensitive = true
+                };
+
+                var payloadJson = JsonSerializer.Serialize(data, options);
                 string hmac = CryptoService.ComputeHMACSHA256(hmacSignature,payloadJson);
 
                 var client = new HttpClient();

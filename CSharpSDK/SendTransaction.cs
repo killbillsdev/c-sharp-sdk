@@ -25,7 +25,7 @@ namespace CSharpSDK
 }
 
 
-        public async Task<string> SendBankingTransactionAsync(string env, object transactionData, string hmacKey)
+        public async Task<string> SendTransactionAsync(string env, object transactionData, string hmacKey)
         {
             if (transactionData == null) 
             {
