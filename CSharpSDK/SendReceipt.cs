@@ -11,9 +11,13 @@ namespace CSharpSDK
     {
         private readonly SendDataWithHmacService _sendDataWithHmacService;
 
-        public SendReceipt()
+        public SendReceipt() : this(new SendDataWithHmacService())
         {
-            _sendDataWithHmacService = new SendDataWithHmacService();
+        }
+
+        public SendReceipt(SendDataWithHmacService sendDataWithHmacService)
+        {
+            _sendDataWithHmacService = sendDataWithHmacService ?? throw new ArgumentNullException(nameof(sendDataWithHmacService));
         }
 
       public (bool IsValid, List<string> Errors) ValidateReceiptPayloadAdapter(object data)

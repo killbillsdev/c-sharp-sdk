@@ -99,3 +99,12 @@
 /Users/theo/c-sharp-sdk/CSharpSDK.Tests/obj/Debug/net7.0/CSharpSDK.Tests.pdb
 /Users/theo/c-sharp-sdk/CSharpSDK.Tests/obj/Debug/net7.0/CSharpSDK.Tests.genruntimeconfig.cache
 /Users/theo/c-sharp-sdk/CSharpSDK.Tests/obj/Debug/net7.0/ref/CSharpSDK.Tests.dll
+/Users/theo/c-sharp-sdk/CSharpSDK.Tests/bin/Debug/net7.0/CSharpSDK.deps.json
+/Users/theo/c-sharp-sdk/CSharpSDK.Tests/bin/Debug/net7.0/CSharpSDK.runtimeconfig.json
+/Users/theo/c-sharp-sdk/CSharpSDK.Tests/bin/Debug/net7.0/CSharpSDK
+/Users/theo/c-sharp-sdk/CSharpSDK.Tests/bin/Debug/net7.0/FluentValidation.dll
+/Users/theo/c-sharp-sdk/CSharpSDK.Tests/bin/Debug/net7.0/Castle.Core.dll
+/Users/theo/c-sharp-sdk/CSharpSDK.Tests/bin/Debug/net7.0/Moq.dll
+/Users/theo/c-sharp-sdk/CSharpSDK.Tests/bin/Debug/net7.0/System.Diagnostics.EventLog.dll
+/Users/theo/c-sharp-sdk/CSharpSDK.Tests/bin/Debug/net7.0/runtimes/win/lib/net6.0/System.Diagnostics.EventLog.Messages.dll
+/Users/theo/c-sharp-sdk/CSharpSDK.Tests/bin/Debug/net7.0/runtimes/win/lib/net6.0/System.Diagnostics.EventLog.dll

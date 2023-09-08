@@ -18,7 +18,7 @@ namespace CSharpSDK
                Invoice = 1,
                Table = "21",
                Date = "2023-09-07T09:04:08",
-               PartnerName = "UNKNOWN",
+               PartnerName = "unknwn",
                Taxes = new List<Tax> {
                  new Tax {
                     Rate = 200,
@@ -54,7 +54,7 @@ namespace CSharpSDK
                }
             };
  
-            string hmacKey = "hmacKey";
+            string hmacKey = "hmac-key";
 
             var sender = new SendReceipt();
 
