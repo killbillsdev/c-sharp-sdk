@@ -7,6 +7,7 @@
     <Authors>Killbills-dev</Authors>
     <Description>Official KillBills C# SDK package</Description>
     <ImplicitUsings>enable</ImplicitUsings>
+    <OutputType>Exe</OutputType>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 

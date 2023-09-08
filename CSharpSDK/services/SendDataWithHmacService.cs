@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace CSharpSDK.Services
 {
@@ -32,25 +32,31 @@ namespace CSharpSDK.Services
                     string combinedErrors = string.Join("; ", errorMessages);
                     throw new ArgumentException(combinedErrors);
                 }
-                string payloadJson = JsonConvert.SerializeObject(data);
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNamingPolicy = null,
+                    PropertyNameCaseInsensitive = true
+                };
+
+                var payloadJson = JsonSerializer.Serialize(data, options);
                 string hmac = CryptoService.ComputeHMACSHA256(hmacSignature,payloadJson);
 
                 var client = new HttpClient();
                 var content = new StringContent(payloadJson, Encoding.UTF8, "application/json");
                 var url = $"https://in.{(env != "prod" ? env + "." : ".")}killbills.{(env != "prod" ? "dev" : "co")}/{endpoint}";
-                var requestMessage = new HttpRequestMessage(HttpMethod.Post, url)
+                var requestMessage =  new HttpRequestMessage(HttpMethod.Post, url)
                 {
                     Content = content
                 };
                 requestMessage.Headers.Add("Authorization", "hmac " + hmac);
 
-                var response = client.SendAsync(requestMessage).Result;
+                var response = await client.SendAsync(requestMessage);
 
                 string responseContent = response.Content.ReadAsStringAsync().Result;
                 
                 Console.WriteLine(responseContent);
                 
-                return payloadJson;
+                return  payloadJson;
             }
             catch (Exception ex)
             {
