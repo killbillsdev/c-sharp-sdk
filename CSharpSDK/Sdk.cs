@@ -1,16 +1,17 @@
-﻿using System;
-using System.Net.Http;
-
-namespace CSharpSDK
+﻿namespace CSharpSDK
 {
-    public partial class Killbills_sdk
+    public class KillBills_Sdk
     {
-        private readonly HttpClient _httpClient;
-        private const string KILLBILLS_STORES_API_URL = "https://yourapiurl.com";
+        private readonly SendReceipt _sendReceipt;
 
-        public Killbills_sdk()
+        public KillBills_Sdk()
         {
-            _httpClient = new HttpClient { BaseAddress = new Uri(KILLBILLS_STORES_API_URL) };
+            _sendReceipt = new SendReceipt();
+        }
+
+        public async Task<string> SendReceiptAsync(string env, object receiptData, string hmacKey)
+        {
+            return await _sendReceipt.SendReceiptAsync(env, receiptData, hmacKey);
         }
     }
 }

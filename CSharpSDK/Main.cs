@@ -55,10 +55,9 @@ namespace CSharpSDK
             };
  
             string hmacKey = "hmac-key";
+            var sdk = new KillBills_Sdk();
 
-            var sender = new SendReceipt();
-
-            string result = await sender.SendReceiptAsync(env, receiptData, hmacKey);
+            string result = await sdk.SendReceiptAsync(env, receiptData, hmacKey);
 
             Console.WriteLine($"Résultat: {result}");
         }
