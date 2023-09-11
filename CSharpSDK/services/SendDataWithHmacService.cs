@@ -45,7 +45,7 @@ namespace CSharpSDK.Services
                 };
                 requestMessage.Headers.Add("Authorization", "hmac " + hmac);
 
-                var response = client.SendAsync(requestMessage).Result;
+                var response = await client.SendAsync(requestMessage);
 
                 string responseContent = response.Content.ReadAsStringAsync().Result;
                 
