@@ -99,3 +99,7 @@
 /Users/theo/c-sharp-sdk/CSharpSDK.Tests/obj/Debug/net7.0/CSharpSDK.Tests.pdb
 /Users/theo/c-sharp-sdk/CSharpSDK.Tests/obj/Debug/net7.0/CSharpSDK.Tests.genruntimeconfig.cache
 /Users/theo/c-sharp-sdk/CSharpSDK.Tests/obj/Debug/net7.0/ref/CSharpSDK.Tests.dll
+/Users/theo/c-sharp-sdk/CSharpSDK.Tests/bin/Debug/net7.0/CSharpSDK.deps.json
+/Users/theo/c-sharp-sdk/CSharpSDK.Tests/bin/Debug/net7.0/CSharpSDK.runtimeconfig.json
+/Users/theo/c-sharp-sdk/CSharpSDK.Tests/bin/Debug/net7.0/CSharpSDK
+/Users/theo/c-sharp-sdk/CSharpSDK.Tests/bin/Debug/net7.0/FluentValidation.dll

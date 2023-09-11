@@ -46,6 +46,10 @@
               "target": "Package",
               "version": "[17.5.0, )"
             },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.20.69, )"
+            },
             "coverlet.collector": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -84,10 +88,10 @@
       }
     },
     "/Users/theo/c-sharp-sdk/CSharpSDK/CSharpSDK.csproj": {
-      "version": "1.0.0",
+      "version": "0.0.1",
       "restore": {
         "projectUniqueName": "/Users/theo/c-sharp-sdk/CSharpSDK/CSharpSDK.csproj",
-        "projectName": "CSharpSDK",
+        "projectName": "Killbills_sdk",
         "projectPath": "/Users/theo/c-sharp-sdk/CSharpSDK/CSharpSDK.csproj",
         "packagesPath": "/Users/theo/.nuget/packages/",
         "outputPath": "/Users/theo/c-sharp-sdk/CSharpSDK/obj/",
@@ -117,6 +121,14 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.7.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
             "System.Net.Http": {
               "target": "Package",
               "version": "[4.3.4, )"
