@@ -6,58 +6,37 @@ namespace CSharpSDK
     {
         static async Task Main(string[] args)
         {
+            var sdk = new KillBills_Sdk();
             Console.WriteLine("Lancement de la fonction sendReceipt...");
 
             string env = "dev";
-            ReceiptDto receiptData = new()
+            TransactionDto transactionData = new()
             {
-               ReferenceId = "reference-id",
-               Amount = 1000,
-               Currency = "EUR",
-               Covers = 0,
-               Invoice = 1,
-               Table = "21",
-               Date = "2023-09-07T09:04:08",
-               PartnerName = "unknwn",
-               Taxes = new List<Tax> {
-                 new Tax {
-                    Rate = 200,
-                    Amount = 20
-                 }
+               BankId = "fbec0cb5-91c8-4b8b-a194-c018fbfe258d",
+               CallbackUrl = "http://localhost",
+               ReceiptFormat = "json",
+               Transaction = new TransactionDetailDto {
+                Amount = 1000,
+                ReferenceId = "reference-id",
+                Currency = "EUR",
+                MerchantName = "zdazd",
+                CustomerId = "fzefezf",
+                StoreName = "dazdazd",
+                TransactionDate = 1693384066,
+                BillingDescriptor = "dazdazd",
+                Siret = "12238383838383",
+                Payment = new PaymentDto {
+                    Bin = "12",
+                    LastFour = "1212",
+                    AuthCode = "1212",
+                    Scheme = "121", 
+                    TransactionId = "121212",
+                },
                },
-               Merchant = new Merchant {
-                ReferenceID = "reference-id-merchant"
-               },
-               Store = new Store {
-                ReferenceID = "reference-id-store",
-                StoreName = "super-store-name",
-                BillingDescriptor = "rambutau-super-store-name-pos1",
-                Siret = "1234"
-               },
-               Items = new List<Item> {
-                 new() {
-                    Name = "soupe aux choux",
-                    Quantity = 2,
-                    Price = 200,
-                    Tax = new Tax {
-                    Rate = 200,
-                    Amount = 20
-                 }
-                 }
-               },
-               Payments = new List<Payment> {
-                    new Payment {
-                        TransactionDate = "2023-09-07T09:04:08",
-                        Amount = 200,
-
-                    }
-               }
             };
- 
-            string hmacKey = "hmac-key";
-            var sdk = new KillBills_Sdk();
-
-            string result = await sdk.SendReceiptAsync(env, receiptData, hmacKey);
+        
+            string hmacKey = "unknwn";
+            string result = await sdk.SendTransactionAsync(env, transactionData, hmacKey);
 
             Console.WriteLine($"Résultat: {result}");
         }
