@@ -1,5 +1,8 @@
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
+
+
 
 namespace CSharpSDK.DTOs
 {
@@ -53,8 +56,9 @@ namespace CSharpSDK.DTOs
         [JsonPropertyName("store")]
         public required Store Store { get; set; } // De même pour celle-ci
 
+        [Required]
         [JsonPropertyName("taxes")]
-        public List<Tax>? Taxes { get; set; } // Et pour celle-ci
+        public required List<Tax> Taxes { get; set; } // Et pour celle-ci
 
         [Required]
         [JsonPropertyName("items")]
@@ -84,7 +88,7 @@ public class Payment
 
     [Required]
     [JsonPropertyName("amount")]
-    public required  string Amount { get; set; }
+    public required  double Amount { get; set; }
 
 
     [JsonPropertyName("transaction_date")]
@@ -106,7 +110,7 @@ public class Merchant
     public required string ReferenceID { get; set; }
 
     [JsonPropertyName("merchant_id")]
-    public int MerchantID { get; set; }
+    public int? MerchantID { get; set; }
 }
 
 public class Store
@@ -143,7 +147,7 @@ public class Address
 {
     [Required]
     [JsonPropertyName("postal_code")]
-    public int PostalCode { get; set; }
+    public required int PostalCode { get; set; }
 
     [JsonPropertyName("street_address")]
     public string? StreetAddress { get; set; }
@@ -158,7 +162,7 @@ public class Address
     public string? FullAddress { get; set; }
 
     [JsonPropertyName("number")]
-    public int Number { get; set; }
+    public int? Number { get; set; }
 }
 
 public class Tax

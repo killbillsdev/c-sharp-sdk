@@ -48,7 +48,7 @@ namespace CSharpSDK
                Payments = new List<Payment> {
                     new Payment {
                         TransactionDate = "2023-09-07T09:04:08",
-                        Amount = "200",
+                        Amount = 200,
 
                     }
                }

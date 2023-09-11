@@ -30,9 +30,7 @@ namespace CSharpSDK.Validators
     {
         public MerchantValidator()
         {
-            // RuleFor(x => x.MerchantName).NotEmpty();
-            // RuleFor(x => x.ReferenceID).NotEmpty();
-            // RuleFor(x => x.MerchantID).GreaterThanOrEqualTo(0); // Assuming a non-negative value
+            RuleFor(x => x.ReferenceID).NotEmpty();
         }
     }
 
@@ -40,13 +38,10 @@ namespace CSharpSDK.Validators
     {
         public StoreValidator()
         {
-            // RuleFor(x => x.StoreName).NotEmpty();
-            // RuleFor(x => x.ReferenceID).NotEmpty();
-            // RuleFor(x => x.BillingDescriptor).NotEmpty();
-            // RuleFor(x => x.Siret).NotEmpty().Length(14).Matches(@"^[0-9]+$");
-            // RuleFor(x => x.CodeAPE).NotEmpty();
-            // RuleFor(x => x.TVAIntra).NotEmpty();
-            // RuleFor(x => x.Address).SetValidator(new AddressValidator());
+            RuleFor(x => x.StoreName).NotEmpty();
+            RuleFor(x => x.ReferenceID).NotEmpty();
+            RuleFor(x => x.BillingDescriptor).NotEmpty();
+            RuleFor(x => x.Siret).NotEmpty().Length(14).Matches(@"^[0-9]+$");
         }
     }
 
@@ -54,12 +49,7 @@ namespace CSharpSDK.Validators
     {
         public AddressValidator()
         {
-            // RuleFor(x => x.PostalCode).NotEmpty().GreaterThan(0);
-            // RuleFor(x => x.StreetAddress).NotEmpty();
-            // RuleFor(x => x.Country).NotEmpty();
-            // RuleFor(x => x.City).NotEmpty();
-            // RuleFor(x => x.FullAddress).NotEmpty();
-            // RuleFor(x => x.Number).GreaterThanOrEqualTo(0); // Assuming a non-negative value
+            RuleFor(x => x.PostalCode).NotEmpty().GreaterThan(0);
         }
     }
 
@@ -67,9 +57,8 @@ namespace CSharpSDK.Validators
     {
         public TaxValidator()
         {
-            // RuleFor(x => x.Description).NotEmpty();
-            // RuleFor(x => x.Amount).NotEmpty().GreaterThan(0);
-            // RuleFor(x => x.Rate).NotEmpty().Must(value => new[] { 550, 1000, 2000 }.Contains(value));
+            RuleFor(x => x.Amount).NotEmpty().GreaterThan(0);
+            RuleFor(x => x.Rate).NotEmpty().Must(value => new[] { 550, 1000, 2000 }.Contains(value));
         }
     }
 

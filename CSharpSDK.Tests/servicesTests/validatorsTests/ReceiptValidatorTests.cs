@@ -22,7 +22,7 @@ namespace CSharpSDK.Tests
                PartnerName = "zelty",
                Taxes = new List<Tax> {
                  new Tax {
-                    Rate = 200,
+                    Rate = 550,
                     Amount = 20
                  }
                },
@@ -33,7 +33,7 @@ namespace CSharpSDK.Tests
                 ReferenceID = "reference-id-store",
                 StoreName = "super-store-name",
                 BillingDescriptor = "rambutau-super-store-name-pos1",
-                Siret = "1234"
+                Siret = "12345678910101"
                },
                Items = new List<Item> {
                  new() {
@@ -41,7 +41,7 @@ namespace CSharpSDK.Tests
                     Quantity = 2,
                     Price = 200,
                     Tax = new Tax {
-                    Rate = 200,
+                    Rate = 550,
                     Amount = 20
                  }
                  }
@@ -49,7 +49,7 @@ namespace CSharpSDK.Tests
                Payments = new List<Payment> {
                     new Payment {
                         TransactionDate = "2023-09-07T09:04:08",
-                        Amount = "200",
+                        Amount = 200,
 
                     }
                }
@@ -102,7 +102,7 @@ namespace CSharpSDK.Tests
                Payments = new List<Payment> {
                     new Payment {
                         TransactionDate = "2023-09-07T09:04:08",
-                        Amount = "200",
+                        Amount = 200,
 
                     }
                }
