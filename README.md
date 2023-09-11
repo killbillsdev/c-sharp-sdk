@@ -6,7 +6,9 @@ The main purpose of this Software Development Kit (SDK) is to facilitate the int
 
 
 # Dependencies
+![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=c-sharp&logoColor=white)
 
+![.Net](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)
 ## Features
 
 - getStores : The method getStores returns a list of killbills integrated stores as an array of objects with relevant properties.
@@ -19,13 +21,13 @@ The main purpose of this Software Development Kit (SDK) is to facilitate the int
 ## Usage/Examples
 #### Installation:
 ```shell
-   dotnet add KillBills_SDK
+   dotnet add KillBills_Sdk
 ```
 #### Import:
 Add to your .csproj file
 ```xml
 <ItemGroup>
-  <PackageReference Include="KillBills_SDK" Version="0.0.1" />
+  <PackageReference Include="KillBills_Sdk" Version="0.0.1" />
 </ItemGroup>
 ```
 Import in your project 
