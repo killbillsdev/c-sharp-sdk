@@ -1,6 +1,5 @@
 using CSharpSDK.Services;
 using CSharpSDK.DTOs;
-
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System;
