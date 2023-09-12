@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "45G73uU6qswzqX6RP2u/83wXgYnz77mmVJDlxBF1hn9UxsXgxaLc4FALt4KUrd1UsCEWMGLt4jYbgbSWaKcv5Q==",
+  "dgSpecHash": "3cLgZKdgvcY/m2BAVrCooFhtq0aMTwJx4DW9zUqqjnqurSaNCRyN8URMaqB6tMLG/QIP0S4LQKxypEJIA+MA7A==",
   "success": true,
-  "projectFilePath": "/Users/theo/c-sharp-sdk/CSharpSDK.Tests/CSharpSDK.Tests.csproj",
+  "projectFilePath": "/Users/azer/Desktop/Work/c-sharp-sdk/CSharpSDK.Tests/CSharpSDK.Tests.csproj",
   "expectedPackageFiles": [
     "/Users/theo/.nuget/packages/castle.core/5.1.1/castle.core.5.1.1.nupkg.sha512",
     "/Users/theo/.nuget/packages/coverlet.collector/3.2.0/coverlet.collector.3.2.0.nupkg.sha512",
