@@ -1,17 +1,17 @@
 using Xunit;
-using CSharpSDK.Services;
+using CSharpSDK.Validators;
 using CSharpSDK.DTOs;
 
 namespace CSharpSDK.Tests
 {
-    public class PayloadValidatorServiceTests
+    public class ValidatorTestReceipt
     {
         [Fact]
-        public void ValidateReceiptPayload_ValidPayload_ReturnsTrueWithNoErrors()
+        public void ReceiptValidator_ValidReceipt_ReturnsValid()
         {
-            // Arrange
-            var validReceiptData = new ReceiptDto
-              {
+            var validator = new ReceiptValidator();
+            var validReceipt = new ReceiptDto
+            {
                ReferenceId = "reference-id",
                Amount = 1000,
                Currency = "EUR",
@@ -41,7 +41,7 @@ namespace CSharpSDK.Tests
                     Quantity = 2,
                     Price = 200,
                     Tax = new Tax {
-                    Rate = 200,
+                    Rate = 550,
                     Amount = 20
                  }
                  }
@@ -50,24 +50,21 @@ namespace CSharpSDK.Tests
                     new Payment {
                         TransactionDate = "2023-09-07T09:04:08",
                         Amount = 200,
+
                     }
                }
             };
+            var result = validator.Validate(validReceipt);
 
-            // Act
-            var (isValid, errors) = PayloadValidatorService.ValidateReceiptPayload(validReceiptData);
-
-            // Assert
-            Assert.True(isValid);
-            Assert.Empty(errors);
+            Assert.True(result.IsValid);
         }
 
         [Fact]
-        public void ValidateReceiptPayload_InvalidPayload_ReturnsFalseWithErrors()
+        public void ReceiptValidator_InvalidReceipt_ReturnsErrors()
         {
-            // Arrange
-            var invalidReceiptData = new ReceiptDto
-              {
+            var validator = new ReceiptValidator();
+            var invalidReceipt = new ReceiptDto
+            {
                ReferenceId = "reference-id",
                Amount = 1000,
                Currency = "UnknownCurrency",
@@ -110,13 +107,21 @@ namespace CSharpSDK.Tests
                     }
                }
             };
+            var result = validator.Validate(invalidReceipt);
 
-            // Act
-            var (isValid, errors) = PayloadValidatorService.ValidateReceiptPayload(invalidReceiptData);
+            Assert.False(result.IsValid);
+        }
 
-            // Assert
-            Assert.False(isValid);
-            Assert.NotEmpty(errors);
+        [Fact]
+        public void MerchantValidator_ValidMerchant_ReturnsValid()
+        {
+            var validator = new MerchantValidator();
+            var validMerchant = new Merchant {
+                ReferenceID = "reference-id-merchant"
+            };
+            var result = validator.Validate(validMerchant);
+
+            Assert.True(result.IsValid);
         }
     }
 }

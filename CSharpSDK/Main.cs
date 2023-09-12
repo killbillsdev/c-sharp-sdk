@@ -1,4 +1,3 @@
-
 using CSharpSDK.DTOs;
 
 namespace CSharpSDK
