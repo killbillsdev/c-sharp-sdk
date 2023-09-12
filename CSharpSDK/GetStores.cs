@@ -1,8 +1,5 @@
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
+using System.Text.Json;
+using CSharpSDK.DTOs;
 
 namespace CSharpSDK
 {
@@ -19,7 +16,7 @@ namespace CSharpSDK
             _killBillsApiService = killBillsApiService ?? throw new ArgumentNullException(nameof(killBillsApiService));
         }
 
-        public async Task<List<object>> GetStoresAsync(string env, string apiKey)
+        public async Task<StoreData> GetStoresAsync(string env, string apiKey)
         {
             return await _killBillsApiService.FetchStoresAsync(env, apiKey);
         }
@@ -27,7 +24,7 @@ namespace CSharpSDK
 
     public class KillBillsApiService
     {
-        public async Task<List<object>> FetchStoresAsync(string env, string apiKey)
+        public async Task<StoreData> FetchStoresAsync(string env, string apiKey)
         {
             if (string.IsNullOrEmpty(env) || string.IsNullOrEmpty(apiKey))
             {
@@ -51,21 +48,15 @@ namespace CSharpSDK
                 }
 
                 string json = await response.Content.ReadAsStringAsync();
-
-                StoreData data = Newtonsoft.Json.JsonConvert.DeserializeObject<StoreData>(json);
-
-                if (data == null || data.Items == null)
+                StoreData storeItems = JsonSerializer.Deserialize<StoreData>(json);
+                if (storeItems == null || storeItems.Count == 0)
                 {
-                    throw new InvalidOperationException("Response does not contain 'items'");
+                  throw new InvalidOperationException("Response does not contain any items");
                 }
 
-                return data.Items;
+                return storeItems;
             }
-        }
-
-        public class StoreData
-        {
-            public List<object>? Items { get; set; }
-        }
+        }  
     }
-}
+  }
+        
