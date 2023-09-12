@@ -246,20 +246,12 @@ Go to the project directory
 ```bash
   cd c-sharp-sdk
 ```
-
-Install dependencies
-```bash
-make
-```
-
-
-
 ## Running Tests
 
 To run tests, run the following command
 
 ```bash
-make test
+cd CSharpSdk.Tests && dotnet test
 ```
 
 
