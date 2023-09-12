@@ -36,9 +36,15 @@ Import in your project
 ```
 #### Method getStores :
 ```csharp
-    var sdk = new KillBills_Sdk();
-    var result = sdk.GetStores('prod','your-api-key');
-    Console.WriteLine(result);
+using CSharpSDK;
+using System.Text.Json;
+
+var sdk = new KillBills_Sdk();
+
+var result = await sdk.GetStoresAsync("prod","your-api-key");
+
+Console.WriteLine(JsonSerializer.Serialize(result));
+
 ```
 ##### Output:
 ```yaml
