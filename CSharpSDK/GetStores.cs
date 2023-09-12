@@ -1,15 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
-
 namespace CSharpSDK
 {
-  public partial class Killbills_sdk
+    public partial class KillBills_Sdk
   {
     public class StoreData
 {
-    public List<object> Items { get; set; }
+    public List<object>? Items { get; set; }
 }
     public async Task<List<object>> GetStores(string env, string apiKey)
     {
@@ -38,7 +33,7 @@ namespace CSharpSDK
         Console.WriteLine("Lancement de la fonction sendReceipt...",json);
 
         // Parse the JSON response
-        StoreData data = Newtonsoft.Json.JsonConvert.DeserializeObject<StoreData>(json);
+        StoreData? data = Newtonsoft.Json.JsonConvert.DeserializeObject<StoreData>(json);
 
         if (data == null || data.Items == null)
         {

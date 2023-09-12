@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/azer/Desktop/Work/c-sharp-sdk/CSharpSDK/CSharpSDK.csproj": {}
+    "/Users/theo/c-sharp-sdk/CSharpSDK/CSharpSDK.csproj": {}
   },
   "projects": {
-    "/Users/azer/Desktop/Work/c-sharp-sdk/CSharpSDK/CSharpSDK.csproj": {
+    "/Users/theo/c-sharp-sdk/CSharpSDK/CSharpSDK.csproj": {
       "version": "0.0.1",
       "restore": {
-        "projectUniqueName": "/Users/azer/Desktop/Work/c-sharp-sdk/CSharpSDK/CSharpSDK.csproj",
+        "projectUniqueName": "/Users/theo/c-sharp-sdk/CSharpSDK/CSharpSDK.csproj",
         "projectName": "Killbills_sdk",
-        "projectPath": "/Users/azer/Desktop/Work/c-sharp-sdk/CSharpSDK/CSharpSDK.csproj",
-        "packagesPath": "/Users/azer/.nuget/packages/",
-        "outputPath": "/Users/azer/Desktop/Work/c-sharp-sdk/CSharpSDK/obj/",
+        "projectPath": "/Users/theo/c-sharp-sdk/CSharpSDK/CSharpSDK.csproj",
+        "packagesPath": "/Users/theo/.nuget/packages/",
+        "outputPath": "/Users/theo/c-sharp-sdk/CSharpSDK/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/azer/.nuget/NuGet/NuGet.Config"
+          "/Users/theo/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -67,7 +67,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.400/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.306/RuntimeIdentifierGraph.json"
         }
       }
     }
