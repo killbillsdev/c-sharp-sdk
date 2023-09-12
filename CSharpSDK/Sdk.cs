@@ -1,6 +1,6 @@
 ﻿namespace CSharpSDK
 {
-    public class KillBills_Sdk
+    public partial class KillBills_Sdk
     {
         private readonly SendTransaction _sendTransaction;
         private readonly SendReceipt _sendReceipt;
