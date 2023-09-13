@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <PackageId>Killbills_sdk</PackageId>
-    <Version>0.0.1</Version>
+    <Version>0.0.4</Version>
     <Authors>Killbills-dev</Authors>
     <Description>Official KillBills C# SDK package</Description>
     <ImplicitUsings>enable</ImplicitUsings>
