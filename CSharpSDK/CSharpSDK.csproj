@@ -7,6 +7,14 @@
     <Description>Official KillBills C# SDK package</Description>
     <ImplicitUsings>enable</ImplicitUsings>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageTags>tag1;tag2</PackageTags>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/killbillsdev/c-sharp-sdk</RepositoryUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <ProjectUrl>https://github.com/killbillsdev/c-sharp-sdk</ProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageIcon>icon.png</PackageIcon>
     <OutputType>Library</OutputType>
     <Nullable>enable</Nullable>
   </PropertyGroup>
