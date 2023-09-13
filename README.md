@@ -6,7 +6,9 @@ The main purpose of this Software Development Kit (SDK) is to facilitate the int
 
 
 # Dependencies
+![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=c-sharp&logoColor=white)
 
+![.Net](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)
 ## Features
 
 - getStores : The method getStores returns a list of killbills integrated stores as an array of objects with relevant properties.
@@ -19,13 +21,30 @@ The main purpose of this Software Development Kit (SDK) is to facilitate the int
 ## Usage/Examples
 #### Installation:
 ```shell
-   
+   dotnet add KillBills_Sdk
 ```
 #### Import:
+Add to your .csproj file
+```xml
+<ItemGroup>
+  <PackageReference Include="KillBills_Sdk" Version="0.0.1" />
+</ItemGroup>
 ```
+Import in your project 
+```csharp
+    var sdk = new KillBills_Sdk();
 ```
 #### Method getStores :
-```
+```csharp
+using CSharpSDK;
+using System.Text.Json;
+
+var sdk = new KillBills_Sdk();
+
+var result = await sdk.GetStoresAsync("prod","your-api-key");
+
+Console.WriteLine(JsonSerializer.Serialize(result));
+
 ```
 ##### Output:
 ```yaml
@@ -51,8 +70,19 @@ The main purpose of this Software Development Kit (SDK) is to facilitate the int
 ```
 # 
 #### Method sendTransaction :
+
 ##### note that the transactionData object only contains minimal required values see (insert link to all possibilities)
-```
+```csharp
+ string env = "prod";
+    TransactionDto transactionData = new()
+    {
+        ...yourPayloadData
+    };
+        
+    string hmacKey = "your-hmac-key";
+    string result = await sdk.SendTransactionAsync(env, transactionData, hmacKey);
+
+    Console.WriteLine($"Résultat: {result}");
 ```
 ##### Output: 
 ```yaml
@@ -66,7 +96,18 @@ The main purpose of this Software Development Kit (SDK) is to facilitate the int
 # 
 #### Method sendReceipt :
 ##### note that the receiptData object only contains minimal required values see (insert link to all possibilities)
-```
+```csharp
+    string env = "prod";
+    ReceiptDto receiptData = new()
+    {
+        ...yourPayloadData
+    };
+        
+    string hmacKey = "your-hmac-key";
+    string result = await sdk.SendReceipt(env, receiptData, hmacKey);
+
+    Console.WriteLine($"Résultat: {result}");
+
 ```
 ##### Output: 
 ```yaml
@@ -81,106 +122,113 @@ The main purpose of this Software Development Kit (SDK) is to facilitate the int
 ## Transaction & Receipt Architecture
 
 #### TRANSACTION :
-```typescript
-transactionData = {
-    bank_id: '', // string (36 caractères)
-    callback_url: '', // string
-    partner_name: '', // string
-    kb_features: [], // tableau de chaînes de caractères ou nombres vides
-    receipt_format: '', // string ('JSON', 'PDF', 'SVG', 'PNG')
-    transaction: {
-        reference_id: '', // string
-        amount: '', // number (positif)
-        customer_id: '', // string
-        transaction_date: '', // date (au format chaîne de caractères)
-        store_name: '', // string ou vide
-        billing_descriptor: '', // string
-        siret: '', // string ou vide
-        payment: '', // objet vide
-        currency: '', // string ou vide
-        pos_name: '', // string ou vide
-        merchant_name: '' // string ou vide
+```csharp
+TransactionDto transactionData = new()
+{
+    BankId = "", // string (36 caractères uuid)
+    CallbackUrl = "", // string url
+    PartnerName = "", // string
+    ReceiptFormat = "", // string ('json', 'pdf', 'svg', 'png')
+    Transaction = new TransactionDetailDto {
+        ReferenceId = "", // string
+        Amount = , // number
+        CustomerId = "", // string
+        TransactionDate = "", // date (au format chaîne de caractères)
+        StoreName = "", // string ou vide
+        BillingDescriptor = "", // string
+        Siret = "", // string ou vide
+        Payment = new PaymentDto {
+            Bin = "",
+            LastFour = "",
+            AuthCode = "",
+            Scheme = "",
+            TransactionId = "",
+        }, 
+        Currency = "", // string ou vide
+        PosName = "", // string ou vide
+        MerchantName = "" // string ou vide
     }
 };
 ```
 #### RECEIPT :
-```typescript
-receiptData = {
-    reference_id: '', // string (alphanumérique)
-    amount: 0, // number
-    total_tax_amount: '', // number ou vide
-    currency: '', // string ('EUR' ou 'USD')
-    date: '', // string (au format 'YYYY-MM-DDTHH:mm:ss')
-    covers: 0, // number ou vide
-    table: '', // string ou vide
-    invoice: 0, // number ou vide
-    total_discount: 0, // number ou vide
-    mode: 0, // number ou vide
-    partner_name: '', // string
-    merchant: {
-        merchant_name: '', // string ou vide
-        reference_id: '', // string
-        merchant_id: 0 // number ou vide
+```csharp
+ReceiptDto receiptData = new() 
+{
+    ReferenceId = "", // string (alphanumérique)
+    Amount = 0, // number
+    TotalTaxAmount = "", // number ou vide
+    Currency = "", // string ('EUR' ou 'USD')
+    Date = "", // string (au format 'YYYY-MM-DDTHH:mm:ss')
+    Covers = 0, // number ou vide
+    Table = "", // string ou vide
+    Invoice = 0, // number ou vide
+    TotalDiscount = 0, // number ou vide
+    Mode = 0, // number ou vide
+    PartnerName = "", // string
+    Merchant = new Merchant {
+        MerchantName = "", // string ou vide
+        ReferenceId = "", // string (required)
+        MerchantId = 0 // number ou vide
     },
-    store: {
-        store_name: '', // string
-        reference_id: '', // string
-        billing_descriptor: '', // string
-        siret: '', // string (14 caractères)
-        code_ape: '', // string ou vide
-        tva_intra: '', // string ou vide
-        address: {
-            postal_code: 0, // number
-            street_address: '', // string ou vide
-            country: '', // string ou vide
-            city: '', // string ou vide
-            full_address: '', // string ou vide
-            number: 0 // number ou vide
+    Store = new Store {
+        StoreName = "", // string
+        ReferenceId = "", // string
+        BillingDescriptor = "", // string
+        Siret = "", // string (14 caractères)
+        CodeApe = "", // string ou vide
+        TvaIntra = "", // string ou vide
+        Address = {
+            PostalCode = 0, // number
+            StreetAddress = "", // string ou vide
+            Country = "", // string ou vide
+            City = "", // string ou vide
+            FullAddress = "", // string ou vide
+            Number = 0 // number ou vide
         }
     },
-    taxes: [{ 
-        description: '', // string ou vide
-        amount: 0, // number
-        rate: 550 // number (550, 1000 ou 2000) ou vide
+    Taxes = new List<Tax> [{ 
+        Description = "", // string ou vide
+        Amount = 0, // number
+        Rate = 550 // number (550, 1000 ou 2000) ou vide
     }],
-    items: [{
-        reference_id: '', // string ou vide
-        name: '', // string
-        description: '', // string ou vide
-        type: '', // string ou vide
-        quantity: 0, // number
-        price: 0, // number
-        discount: 0, // number ou vide
-        total_amount: 0, // number ou vide
-        tax: {
-            description: '', // string ou vide
-            amount: 0, // number
-            rate: 550 // number (550, 1000 ou 2000) ou vide
+    Items = new List<Item> [{
+        ReferenceId = "", // string ou vide
+        Name = "", // string
+        Description = "", // string ou vide
+        Type = "", // string ou vide
+        Quantity = 0, // number
+        Price = 0, // number
+        Discount = 0, // number ou vide
+        TotalAmount = 0, // number ou vide
+        Tax = new Tax {
+            Description = "", // string ou vide
+            Amount = 0, // number
+            Rate = 550 // number (550, 1000 ou 2000) ou vide
         },
-        subitems: [{
-            reference_id: '', // string ou vide
-            name: '', // string
-            description: '', // string ou vide
-            quantity: 0, // number ou vide
-            price: 0, // number ou vide
-            discount: 0, // number ou vide
-            total_amount: 0, // number ou vide
-            tax: {
-                description: '', // string ou vide
-                amount: 0, // number
-                rate: 550 // number (550, 1000 ou 2000) ou vide
+        Subitems = [{
+            ReferenceId = "", // string ou vide
+            Name = "", // string
+            Description = "", // string ou vide
+            Quantity = 0, // number ou vide
+            Price = 0, // number ou vide
+            Discount = 0, // number ou vide
+            TotalAmount = 0, // number ou vide
+            Tax = {
+                Description = "", // string ou vide
+                Amount = 0, // number
+                Rate = 550 // number (550, 1000 ou 2000) ou vide
             }
         }]
     }],
-    payments: [{
-        bin: '', // string ou vide
-        last_four: '', // string ou vide
-        auth_code: '', // string ou vide
-        scheme: '', // string ou vide
-        amount: 0, // number
-        transaction_date: '', // string (au format 'YYYY-MM-DDTHH:mm:ss')
-        transaction_id: '', // string ou vide
-        payment_type: '' // string ou vide
+    Payments = [{
+        Bin = "", // string ou vide
+        LastFour = "", // string ou vide
+        AuthCode = "", // string ou vide
+        Scheme = "", // string ou vide
+        Amount = 0, // number
+        TransactionDate = "", // string (au format 'YYYY-MM-DDTHH:mm:ss')
+        TransactionId = "", // string ou vide
+        PaymentType = "" // string ou vide
     }]
 };
 ```
@@ -198,20 +246,12 @@ Go to the project directory
 ```bash
   cd c-sharp-sdk
 ```
-
-Install dependencies
-```bash
-make
-```
-
-
-
 ## Running Tests
 
 To run tests, run the following command
 
 ```bash
-make test
+cd CSharpSdk.Tests && dotnet test
 ```
 
 
