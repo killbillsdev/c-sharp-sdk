@@ -8,6 +8,8 @@
     <copyright>Copyright (c) KillBills</copyright>
     <licenseUrl>https://github.com/killbillsdev/c-sharp-sdk</licenseUrl>
     <projectUrl>https://github.com/killbillsdev/c-sharp-sdk</projectUrl>
+    <ProjectUrl>https://github.com/killbillsdev/c-sharp-sdk</ProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <tags>KillBills SDK</tags>
     <dependencies>
         <dependency id="FluentValidation" version="11.7.1" />
