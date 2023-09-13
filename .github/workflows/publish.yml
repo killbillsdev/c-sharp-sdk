@@ -69,7 +69,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
     - name: Run tests
-      run: dotnet test --configuration Release
+      run: cd CSharpSDK.Tests && dotnet test --configuration Release
 
   deploy:
     # Publish only when creating a GitHub Release
