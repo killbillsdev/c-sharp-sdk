@@ -13,7 +13,6 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <ProjectUrl>https://github.com/killbillsdev/c-sharp-sdk</ProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageIcon>icon.png</PackageIcon>
     <OutputType>Library</OutputType>
     <Nullable>enable</Nullable>
