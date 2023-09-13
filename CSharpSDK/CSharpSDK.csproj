@@ -6,6 +6,7 @@
     <Authors>Killbills-dev</Authors>
     <Description>Official KillBills C# SDK package</Description>
     <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <OutputType>Library</OutputType>
     <Nullable>enable</Nullable>
   </PropertyGroup>
