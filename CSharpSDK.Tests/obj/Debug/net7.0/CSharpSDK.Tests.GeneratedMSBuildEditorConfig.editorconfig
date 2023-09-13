@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CSharpSDK.Tests
-build_property.ProjectDir = /Users/theo/c-sharp-sdk/CSharpSDK.Tests/
+build_property.ProjectDir = /Users/azer/Desktop/Work/c-sharp-sdk/CSharpSDK.Tests/

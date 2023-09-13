@@ -1,16 +1,30 @@
-﻿using System;
-using System.Net.Http;
-
-namespace CSharpSDK
+﻿namespace CSharpSDK
 {
-    public partial class Killbills_sdk
+    public partial class KillBills_Sdk
     {
-        private readonly HttpClient _httpClient;
-        private const string KILLBILLS_STORES_API_URL = "https://yourapiurl.com";
+        private readonly SendTransaction _sendTransaction;
+        private readonly SendReceipt _sendReceipt;
+        private readonly GetStores _getStores;
 
-        public Killbills_sdk()
+        public KillBills_Sdk()
         {
-            _httpClient = new HttpClient { BaseAddress = new Uri(KILLBILLS_STORES_API_URL) };
+            _sendTransaction = new SendTransaction();
+            _sendReceipt = new SendReceipt();
+            _getStores = new GetStores();
         }
+        public async Task<string> SendReceiptAsync(string env, object receiptData, string hmacKey)
+        {
+            return await _sendReceipt.SendReceiptAsync(env, receiptData, hmacKey);
+        }
+        public async Task<string> SendTransactionAsync(string env, object transactionData, string hmacKey)
+        {
+            return await _sendTransaction.SendTransactionAsync(env, transactionData, hmacKey);
+        }
+        public async Task<object> GetStoresAsync(string env,string apiKey)
+        {
+            return await _getStores.GetStoresAsync(env, apiKey);
+        }
+
+        // À l'avenir, vous pourriez ajouter d'autres méthodes ici
     }
 }
