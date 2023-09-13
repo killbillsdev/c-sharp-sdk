@@ -10,7 +10,6 @@
     <PackageTags>tag1;tag2</PackageTags>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/killbillsdev/c-sharp-sdk</RepositoryUrl>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
     <ProjectUrl>https://github.com/killbillsdev/c-sharp-sdk</ProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <OutputType>Library</OutputType>
