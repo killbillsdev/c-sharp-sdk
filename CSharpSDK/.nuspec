@@ -1,6 +1,6 @@
 <metadata>
     <id>KillBillsSDK</id>
-    <version>0.0.5</version>
+    <version>0.0.6</version>
     <authors>Killbillsdev</authors>
     <owners>Killbillsdev</owners>
     <description>The main purpose of this Software Development Kit (SDK) is to facilitate the integration of KillBills' services into C# applications. The SDK will act as an intermediary layer, allowing developers to communicate with the KillBills API and access its features in a straightforward manner. By providing a consistent and easy-to-use interface, the SDK aims to simplify & speed up the process of integrating KillBills' services into C# applications.</description>

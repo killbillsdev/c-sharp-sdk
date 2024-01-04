@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v7.0": {
-      "CSharpSDK/0.0.4": {
+      "CSharpSDK/0.0.6": {
         "dependencies": {
           "FluentValidation": "11.7.1",
           "Newtonsoft.Json": "13.0.3",
@@ -427,7 +427,7 @@
     }
   },
   "libraries": {
-    "CSharpSDK/0.0.4": {
+    "CSharpSDK/0.0.6": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
