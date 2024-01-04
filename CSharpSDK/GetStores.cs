@@ -16,15 +16,15 @@ namespace CSharpSDK
             _killBillsApiService = killBillsApiService ?? throw new ArgumentNullException(nameof(killBillsApiService));
         }
 
-        public async Task<StoreData> GetStoresAsync(string env, string apiKey)
+        public async Task<StoreData> GetStoresAsync(string env, string apiKey, int offset, int limit)
         {
-            return await _killBillsApiService.FetchStoresAsync(env, apiKey);
+            return await _killBillsApiService.FetchStoresAsync(env, apiKey, offset, limit );
         }
     }
 
     public class KillBillsApiService
     {
-        public async Task<StoreData> FetchStoresAsync(string env, string apiKey)
+        public async Task<StoreData> FetchStoresAsync(string env, string apiKey , int offset, int limit)
         {
             if (string.IsNullOrEmpty(env) || string.IsNullOrEmpty(apiKey))
             {
@@ -35,7 +35,7 @@ namespace CSharpSDK
                 ? "https://w.killbills.co"
                 : $"https://w.{env}.killbills.dev";
 
-            string url = $"{baseURL}/stores";
+            string url = $"{baseURL}/stores?offset={offset}&limit={limit}";
 
             using (HttpClient client = new HttpClient())
             {

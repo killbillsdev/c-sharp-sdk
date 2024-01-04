@@ -20,9 +20,9 @@
         {
             return await _sendTransaction.SendTransactionAsync(env, transactionData, hmacKey);
         }
-        public async Task<object> GetStoresAsync(string env,string apiKey)
+        public async Task<object> GetStoresAsync(string env,string apiKey , int offset, int limit)
         {
-            return await _getStores.GetStoresAsync(env, apiKey);
+            return await _getStores.GetStoresAsync(env, apiKey, offset, limit );
         }
 
         // À l'avenir, vous pourriez ajouter d'autres méthodes ici
