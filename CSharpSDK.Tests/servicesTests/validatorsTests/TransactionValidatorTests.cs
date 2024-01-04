@@ -4,7 +4,7 @@ using CSharpSDK.DTOs;
 
 namespace CSharpSDK.Tests
 {
-    public class ValidatorTests
+    public class ValidatorTestsTransaction
     {
         [Fact]
         public void TransactionValidator_ValidTransaction_ReturnsValid()

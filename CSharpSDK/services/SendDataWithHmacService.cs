@@ -39,7 +39,7 @@ namespace CSharpSDK.Services
                 var client = new HttpClient();
                 var content = new StringContent(payloadJson, Encoding.UTF8, "application/json");
                 var url = $"https://in.{(env != "prod" ? env + "." : ".")}killbills.{(env != "prod" ? "dev" : "co")}/{endpoint}";
-                var requestMessage = new HttpRequestMessage(HttpMethod.Post, url)
+                var requestMessage =  new HttpRequestMessage(HttpMethod.Post, url)
                 {
                     Content = content
                 };
@@ -51,7 +51,7 @@ namespace CSharpSDK.Services
                 
                 Console.WriteLine(responseContent);
                 
-                return payloadJson;
+                return  payloadJson;
             }
             catch (Exception ex)
             {
@@ -60,4 +60,3 @@ namespace CSharpSDK.Services
         }
     }
 }
-

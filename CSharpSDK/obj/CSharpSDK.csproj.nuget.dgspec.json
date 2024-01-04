@@ -5,7 +5,7 @@
   },
   "projects": {
     "/Users/azer/Desktop/Work/c-sharp-sdk/CSharpSDK/CSharpSDK.csproj": {
-      "version": "0.0.1",
+      "version": "0.0.4",
       "restore": {
         "projectUniqueName": "/Users/azer/Desktop/Work/c-sharp-sdk/CSharpSDK/CSharpSDK.csproj",
         "projectName": "Killbills_sdk",
